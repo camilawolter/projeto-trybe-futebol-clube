@@ -6,4 +6,9 @@ const getAllTeams = async (): Promise<ITeam[]> => {
   return teams;
 };
 
-export default { getAllTeams };
+const getById = async (id: number): Promise<ITeam> => {
+  const team = TeamModel.findByPk(id);
+  return team as unknown as ITeam;
+};
+
+export default { getAllTeams, getById };

@@ -12,11 +12,11 @@ const login = async (req:Request, res: Response) => {
   const { email, password } = req.body;
 
   const user = await userService.getUserByEmail(email);
+
   if (!user || !user.id) {
-    return res.status(401).json({
-      message: 'Incorrect email or password',
-    });
+    return res.status(401).json({ message: 'Incorrect email or password' });
   }
+
   if (!bcrypt.compareSync(password, user.password)) {
     return res.status(401).json({ message: 'Incorrect email or password' });
   }
@@ -30,4 +30,11 @@ const login = async (req:Request, res: Response) => {
   return res.status(200).json({ token });
 };
 
-export default { login };
+const getRole = async (req: Request, res: Response) => {
+  const { email } = req.body;
+
+  const user = await userService.getUserByEmail(email);
+  return res.status(200).json({ role: user?.role });
+};
+
+export default { login, getRole };

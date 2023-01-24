@@ -7,7 +7,7 @@ class Match extends Model {
   declare homeTeamId: number;
   declare homeTeamGoals: number;
   declare awayTeamId: number;
-  declare awayTeamsGoals: number;
+  declare awayTeamGoals: number;
   declare inProgress: boolean;
 }
 
@@ -30,7 +30,7 @@ Match.init({
     type: DataTypes.NUMBER,
     allowNull: false,
   },
-  awayTeamsGoals: {
+  awayTeamGoals: {
     type: DataTypes.NUMBER,
     allowNull: false,
   },
@@ -62,7 +62,7 @@ Match.belongsTo(Team, {
 
 Match.belongsTo(Team, {
   foreignKey: 'awayTeamId',
-  as: 'awayTeamId',
+  as: 'awayTeam',
 });
 
 export default Match;

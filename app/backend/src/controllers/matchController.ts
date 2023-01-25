@@ -14,4 +14,22 @@ const getAllMatchesInProgress = async (req:Request, res:Response, next: NextFunc
   return res.status(200).json(matches);
 };
 
-export default { getAllMatches, getAllMatchesInProgress };
+const createdMatches = async (req:Request, res:Response) => {
+  const { user, ...match } = req.body;
+
+  const newMatch = await matchService.createdMatches(match);
+  return res.status(201).json(newMatch);
+};
+
+const finishMatches = async (req:Request, res:Response) => {
+  const { id } = req.params;
+
+  const finishMatch = await matchService.finishMatches(Number(id));
+
+  if (finishMatch) {
+    return res.status(200).json({ message: 'Finished' });
+  }
+  return res.status(500).json({ message: 'Not finished' });
+};
+
+export default { getAllMatches, getAllMatchesInProgress, createdMatches, finishMatches };

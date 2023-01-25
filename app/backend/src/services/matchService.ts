@@ -21,4 +21,25 @@ const getAllMatchesInProgress = async (inProgress: string): Promise<IMatch[]> =>
   return allMatches as unknown as IMatch[];
 };
 
-export default { getAllMatches, getAllMatchesInProgress };
+const createdMatches = async (match: IMatch): Promise<IMatch> => {
+  const newMatch = await MatchModel.create({
+    ...match, inProgress: true,
+  }, { include: [{ model: TeamModel, as: 'homeTeam' },
+    { model: TeamModel, as: 'awayTeam' }],
+  });
+  return newMatch as unknown as IMatch;
+};
+
+const finishMatches = async (id:number): Promise<number> => {
+  const [updateMatch] = await MatchModel.update(
+    { inProgress: false },
+    { where: { id } },
+  );
+  return updateMatch;
+};
+
+export default {
+  getAllMatches,
+  getAllMatchesInProgress,
+  createdMatches,
+  finishMatches };

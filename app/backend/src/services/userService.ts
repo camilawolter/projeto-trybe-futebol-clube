@@ -12,6 +12,12 @@ const getUserByEmail = async (email: string): Promise<IUser> => {
   };
 };
 
+const getUserById = async (id: number): Promise<IUser> => {
+  const user = await UserModel.findOne({ where: { id } });
+  return user as IUser;
+};
+
 export default {
   getUserByEmail,
+  getUserById,
 };

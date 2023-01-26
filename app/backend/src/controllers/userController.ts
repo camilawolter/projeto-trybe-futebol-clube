@@ -30,11 +30,11 @@ const login = async (req:Request, res: Response) => {
   return res.status(200).json({ token });
 };
 
-// const getRole = async (req: Request, res: Response) => {
-//   const { email } = req.body;
+const getRole = async (req: Request, res: Response) => {
+  const { id } = req.body.user;
 
-//   const user = await userService.getUserByEmail(email);
-//   return res.status(200).json({ role: user?.role });
-// };
+  const user = await userService.getUserById(Number(id));
+  return res.status(200).json({ role: user.role });
+};
 
-export default { login };
+export default { login, getRole };

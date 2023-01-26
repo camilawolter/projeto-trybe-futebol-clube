@@ -2,6 +2,11 @@ import { IMatch } from '../interfaces';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
 
+type IGoals = {
+  homeTeamGoals: number,
+  awayTeamGoals: number
+};
+
 const getAllMatches = async (): Promise<IMatch[]> => {
   const allMatches = await MatchModel.findAll({
     include: [{ model: TeamModel, as: 'homeTeam', attributes: { exclude: ['id'] } },
@@ -38,8 +43,18 @@ const finishMatches = async (id:number): Promise<number> => {
   return updateMatch;
 };
 
+const updateGoals = async (id: number, body: IGoals) => {
+  const { homeTeamGoals, awayTeamGoals } = body;
+  const update = MatchModel.update(
+    { homeTeamGoals, awayTeamGoals },
+    { where: { id, inProgress: 1 } },
+  );
+  return update;
+};
+
 export default {
   getAllMatches,
   getAllMatchesInProgress,
   createdMatches,
-  finishMatches };
+  finishMatches,
+  updateGoals };

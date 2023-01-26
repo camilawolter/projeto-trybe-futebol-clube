@@ -32,4 +32,16 @@ const finishMatches = async (req:Request, res:Response) => {
   return res.status(500).json({ message: 'Not finished' });
 };
 
-export default { getAllMatches, getAllMatchesInProgress, createdMatches, finishMatches };
+const updateGoals = async (req:Request, res:Response) => {
+  const { id } = req.params;
+
+  await matchService.updateGoals(Number(id), req.body);
+  return res.status(200).json({ message: 'Score is updated' });
+};
+
+export default {
+  getAllMatches,
+  getAllMatchesInProgress,
+  createdMatches,
+  finishMatches,
+  updateGoals };

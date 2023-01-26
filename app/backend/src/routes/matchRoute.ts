@@ -13,4 +13,6 @@ matchRouter.post('/', validateJwt, validateMatch, matchController.createdMatches
 
 matchRouter.patch('/:id/finish', matchController.finishMatches);
 
+matchRouter.patch('/:id', matchController.updateGoals);
+
 export default matchRouter;

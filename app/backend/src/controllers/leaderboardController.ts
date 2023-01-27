@@ -7,4 +7,10 @@ const getLeaderboardHome = async (req: Request, res: Response): Promise<Response
   return res.status(200).json(result);
 };
 
-export default { getLeaderboardHome };
+const getLeaderboardAway = async (req: Request, res: Response): Promise<Response> => {
+  const [result] = await leaderboardService.getLeaderboardAway();
+
+  return res.status(200).json(result);
+};
+
+export default { getLeaderboardHome, getLeaderboardAway };

@@ -13,4 +13,10 @@ const getLeaderboardAway = async (req: Request, res: Response): Promise<Response
   return res.status(200).json(result);
 };
 
-export default { getLeaderboardHome, getLeaderboardAway };
+const getLeaderboardHomeAway = async (req: Request, res: Response): Promise<Response> => {
+  const result = await leaderboardService.getLeaderboardHomeAway();
+
+  return res.status(200).json(result.message);
+};
+
+export default { getLeaderboardHome, getLeaderboardAway, getLeaderboardHomeAway };

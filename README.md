@@ -1,4 +1,4 @@
-# Project Trybe Futebol Clube
+# Projeto Trybe Futebol Clube
 
 Este repositório contém o projeto Trybe Futebol Clube desenvolvido por [Camila Wolter](https://www.linkedin.com/in/camilawolter/) enquanto estudava na [Trybe](https://www.betrybe.com/) no módulo de BackEnd.
 
@@ -13,7 +13,7 @@ Tecnologias utilizadas:
 
 **Front-end:** [React](https://reactjs.org/), [axios](https://axios-http.com/)
 
-**Back-end:** [Typescript](https://www.typescriptlang.org/), [Express](https://expressjs.com/), [Sequelize](https://sequelize.org/), [Sinon.JS](https://sinonjs.org/), [Chai](https://www.chaijs.com/), [JWT](https://jwt.io/), [bcrypt](https://www.npmjs.com/package/bcrypt)
+**Back-end:** [Typescript](https://www.typescriptlang.org/), [Express](https://expressjs.com/), [Sequelize](https://sequelize.org/), [Sinon.JS](https://sinonjs.org/), [JWT](https://jwt.io/), [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 **Database:** [MySQL](https://www.mysql.com/)
 
